@@ -6,7 +6,7 @@
 /*   By: rsaid <rsaid@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 01:14:52 by rsaid             #+#    #+#             */
-/*   Updated: 2023/04/10 02:25:16 by rsaid            ###   ########.fr       */
+/*   Updated: 2023/04/21 20:15:32 by rsaid            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,14 @@ int epc01_checker(char *str)
 	while(str[i])
 	{
 		if(str[i] == 'P')
-			p_flag = 1;
+			p_flag++;
 		i++;
 	}
 	i = 0;
 	while(str[i])
 	{
 		if(str[i] == 'E')
-			e_flag = 1;
+			e_flag++;
 		i++;
 	}
 	i = 0;
@@ -71,7 +71,6 @@ int epc01_checker(char *str)
 		}
 		i++;
 	}
-	// printf("inv : %d\n", inv_flag);
 	flags = inv_flag + w_flag + sp_flag + e_flag + p_flag + c_flag;
 	return(flags) ;
 }
@@ -94,7 +93,6 @@ int map_strlen(char *str)
 		i -= 1;
 	if(str[0] != '1' || str[i - 1] != '1')
 	{
-		// printf("invalid map");
 		exit(0);
 	}
 	return (i);
@@ -114,7 +112,6 @@ void map_size_checker(char *str, int flag)
 	else
 		if(tmp != len)
 		{
-			// printf("here");
 			exit(0);
 		}
 }
@@ -134,10 +131,8 @@ char **map_organizer(int fd)
 		line = get_next_line(fd);
 		map_size_checker(line, 0);
 	}
-	// printf("flags : %d\n", epc01_checker(sec_map));
 	if(epc01_checker(sec_map) != 5)
 	{
-		// printf("EXIT");
 		exit(0);
 	}
 	close(fd);
