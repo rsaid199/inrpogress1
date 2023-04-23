@@ -14,16 +14,15 @@
 
 int epc01_checker(char *str)
 {
-	int i;
-	int flags;
-	int w_flag;
-	int sp_flag;
-	int p_flag;
-	int c_flag;
-	int e_flag;
-	int inv_flag;
+	int i = 0;
+	int flags = 0;
+	int w_flag = 0;
+	int sp_flag = 0;
+	int p_flag = 0;
+	int c_flag = 0;
+	int e_flag = 0;
+	int inv_flag = 0;
 
-	c_flag, w_flag, sp_flag, p_flag, e_flag, inv_flag, i = 0;
 	if(!str)
 		return (0);
 	while(str[i])
@@ -81,6 +80,7 @@ int map_strlen(char *str)
 	int flag;
 
 	i = 0;
+	flag = 0;
 	if(!str)
 		return 0;
 	while(str[i])
@@ -93,27 +93,28 @@ int map_strlen(char *str)
 		i -= 1;
 	if(str[0] != '1' || str[i - 1] != '1')
 	{
-		exit(0);
+		return(0);
 	}
 	return (i);
 }
 
 
-void map_size_checker(char *str, int flag)
+int map_size_checker(char *str, int flag)
 {
 	static int tmp;
 	int len;
 
-	len = map_strlen(str);
 	if(!str)
-		return ;
+		return (0);
+	len = map_strlen(str);
 	if(flag == 1)
 		tmp = len;
 	else
-		if(tmp != len)
+		if(tmp != len || map_strlen == 0)
 		{
-			exit(0);
+			return (0);
 		}
+	return 1;
 }
 
 char **map_organizer(int fd)
@@ -127,15 +128,22 @@ char **map_organizer(int fd)
 	map_size_checker(line, 1);
 	while(line)
 	{
-		sec_map = ft_strjoin(sec_map, line);
+		sec_map = ft_strjoin_with_free(sec_map, line);
 		line = get_next_line(fd);
-		map_size_checker(line, 0);
+		if(line && map_size_checker(line, 0) == 0)
+		{
+			free(sec_map);
+			free(line);
+			exit(0);
+		}
 	}
 	if(epc01_checker(sec_map) != 5)
 	{
+		free(sec_map);
 		exit(0);
 	}
 	close(fd);
 	map_dp = ft_split(sec_map, '\n');
+	free(sec_map);
 	return(map_dp);
 }

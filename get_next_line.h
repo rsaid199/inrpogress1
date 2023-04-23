@@ -23,12 +23,12 @@
 # include <stdlib.h>
 // #include "minilibx-linux/mlx.h"
 // #include "minilibx-linux/mlx_int.h"
-#include <mlx.h>
+// #include <mlx.h>
 #include <math.h>
 // #include <AppKit/NSGraphics.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 1
 # endif
 
 typedef struct s_vars
@@ -86,5 +86,6 @@ int		wordcounter(char *s, char c);
 void 	map_drawer(char **sec_map, void *mlx_ptr, void *win_ptr);
 int 	checker_c(char **sec_map);
 int 	checker_e(char **sec_map);
-
+int     map_size_checker(char *str, int flag);
+char	*ft_strjoin_with_free(char *s1, char *s2);
 #endif

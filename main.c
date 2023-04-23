@@ -191,8 +191,8 @@ int main()
     vars.i = 0;
 	vars.x = 0;
 
-    vars.fd = open("maps/map2.ber", O_RDONLY);
-    vars.sec_map = map_organizer(vars.fd);;
+    vars.fd = open("maps/map3.ber", O_RDONLY);
+    vars.sec_map = map_organizer(vars.fd);
     vars.i = ft_strlen(vars.sec_map[vars.x]);
     while(vars.sec_map[vars.x])
         vars.x++;
@@ -201,6 +201,13 @@ int main()
     map_drawer(vars.sec_map, vars.mlx_ptr, vars.win_ptr);
 	mlx_hook(vars.win_ptr, 2, 0, handle_keypress, &vars);
     mlx_loop(vars.mlx_ptr);
+    vars.x = 0;
+    while(vars.sec_map[vars.x])
+    {
+        free(vars.sec_map[vars.x]);
+        vars.x++;
+    }
+    free(vars.sec_map);
 
     return 0;
 }
