@@ -6,7 +6,7 @@
 /*   By: rsaid <rsaid@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 21:07:13 by rsaid             #+#    #+#             */
-/*   Updated: 2023/04/21 20:09:05 by rsaid            ###   ########.fr       */
+/*   Updated: 2023/04/23 17:23:25 by rsaid            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <stdlib.h>
 // #include "minilibx-linux/mlx.h"
 // #include "minilibx-linux/mlx_int.h"
-// #include <mlx.h>
+#include <mlx.h>
 #include <math.h>
 // #include <AppKit/NSGraphics.h>
 

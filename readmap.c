@@ -16,6 +16,7 @@ void map_maker(char *line, void *mlx_ptr, void *win_ptr,int ra2si)
 			if(!vars.img_wall)
 				exit(2);
             mlx_put_image_to_window(mlx_ptr, win_ptr, vars.img_wall, ofoki, ra2si);
+			mlx_destroy_image(mlx_ptr, vars.img_wall);
             ofoki += 64;
         }
         else if(line[i] == '0')
@@ -24,6 +25,7 @@ void map_maker(char *line, void *mlx_ptr, void *win_ptr,int ra2si)
 			if(!vars.img_space)
 				exit(2);
             mlx_put_image_to_window(mlx_ptr, win_ptr, vars.img_space, ofoki, ra2si);
+			mlx_destroy_image(mlx_ptr, vars.img_space);
             ofoki += 64;
         }
         else if(line[i] == 'C')
@@ -32,6 +34,7 @@ void map_maker(char *line, void *mlx_ptr, void *win_ptr,int ra2si)
 			if(!vars.img_fish)
 				exit(2);
             mlx_put_image_to_window(mlx_ptr, win_ptr, vars.img_fish, ofoki, ra2si);
+			mlx_destroy_image(mlx_ptr, vars.img_fish);
             ofoki += 64;
         }
         else if(line[i] == 'P')
@@ -40,6 +43,7 @@ void map_maker(char *line, void *mlx_ptr, void *win_ptr,int ra2si)
 			if(!vars.img_shark)
 				exit(2);
             mlx_put_image_to_window(mlx_ptr, win_ptr, vars.img_shark, ofoki, ra2si);
+			mlx_destroy_image(mlx_ptr, vars.img_shark);
             ofoki += 64;
         }
         else if(line[i] == 'E')
@@ -48,6 +52,7 @@ void map_maker(char *line, void *mlx_ptr, void *win_ptr,int ra2si)
 			if(!vars.img_exit)
 				exit(2);
             mlx_put_image_to_window(mlx_ptr, win_ptr, vars.img_exit, ofoki, ra2si);
+			mlx_destroy_image(mlx_ptr, vars.img_exit);
             ofoki += 64;
         }
         i++;

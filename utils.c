@@ -6,7 +6,7 @@
 /*   By: rsaid <rsaid@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 01:14:52 by rsaid             #+#    #+#             */
-/*   Updated: 2023/04/21 20:15:32 by rsaid            ###   ########.fr       */
+/*   Updated: 2023/04/23 17:23:47 by rsaid            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int map_size_checker(char *str, int flag)
 	if(flag == 1)
 		tmp = len;
 	else
-		if(tmp != len || map_strlen == 0)
+		if(tmp != len || map_strlen(str) == 0)
 		{
 			return (0);
 		}

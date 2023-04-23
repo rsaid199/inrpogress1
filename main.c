@@ -70,7 +70,7 @@ int handle_keypress(int keycode, t_main *vars)
     int i = 0;
     int x = 1;
 
-    if(keycode == 124)
+    if(keycode == 124 || keycode == 2)
     {
         while(vars->sec_map[x][i])
         {
@@ -97,7 +97,7 @@ int handle_keypress(int keycode, t_main *vars)
             }
         }
     }
-    else if(keycode == 123)
+    else if(keycode == 123 || keycode == 0)
     {
         while(vars->sec_map[x][i])
         {
@@ -124,7 +124,7 @@ int handle_keypress(int keycode, t_main *vars)
             }
         }
     }
-    else if(keycode == 126)
+    else if(keycode == 126 || keycode == 13)
     {
         while(vars->sec_map[x][i])
         {
@@ -151,7 +151,7 @@ int handle_keypress(int keycode, t_main *vars)
             }
         }
     }
-    else if(keycode == 125)
+    else if(keycode == 125 || keycode == 1)
     {
         while(vars->sec_map[x][i])
         {
@@ -191,7 +191,7 @@ int main()
     vars.i = 0;
 	vars.x = 0;
 
-    vars.fd = open("maps/map3.ber", O_RDONLY);
+    vars.fd = open("maps/map2.ber", O_RDONLY);
     vars.sec_map = map_organizer(vars.fd);
     vars.i = ft_strlen(vars.sec_map[vars.x]);
     while(vars.sec_map[vars.x])
@@ -200,6 +200,7 @@ int main()
     vars.win_ptr = mlx_new_window(vars.mlx_ptr, vars.i*64, vars.x*64, "Test Window");
     map_drawer(vars.sec_map, vars.mlx_ptr, vars.win_ptr);
 	mlx_hook(vars.win_ptr, 2, 0, handle_keypress, &vars);
+	mlx_hook(vars.win_ptr, 17, 0, (void*)exit, 0);
     mlx_loop(vars.mlx_ptr);
     vars.x = 0;
     while(vars.sec_map[vars.x])
