@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   split.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rsaid <rsaid@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/24 19:59:39 by rsaid             #+#    #+#             */
+/*   Updated: 2023/04/24 20:00:28 by rsaid            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 int	wordcounter(char *s, char c)
@@ -28,8 +40,8 @@ char	*maker(char *x, int start, int end)
 
 	i = 0;
 	z = malloc(sizeof(char) * (end - start) + 1);
-    if(!z)
-        return (NULL);
+	if (!z)
+		return (NULL);
 	while (start < end)
 	{
 		z[i] = x[start];

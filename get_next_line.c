@@ -6,33 +6,36 @@
 /*   By: rsaid <rsaid@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 20:49:25 by rsaid             #+#    #+#             */
-/*   Updated: 2023/01/29 20:50:06 by rsaid            ###   ########.fr       */
+/*   Updated: 2023/04/24 19:54:03 by rsaid            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-#define MAX  100000
-
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
-    if (BUFFER_SIZE <= 0)
-        return (NULL);
-    int     i = 0;
-    int     rd = 0;
-    char    character;
-    char    *buffer = malloc(MAX);
+	int		i;
+	int		rd;
+	char	character;
+	char	*buffer;
 
-    while ((rd = read(fd, &character, BUFFER_SIZE - BUFFER_SIZE + 1)) > 0)
-    {
-        buffer[i++] = character;
-        if (character == '\n')
-            break ;
-    }
-    buffer[i] =  '\0';
-    if (rd == -1 || i == 0 || (!buffer[i - 1] && !rd))
-        return (free(buffer), NULL);
-    return(buffer);
+	if (BUFFER_SIZE <= 0)
+		return (NULL);
+	i = 0;
+	rd = 0;
+	buffer = malloc(MAX);
+	rd = read(fd, &character, BUFFER_SIZE - BUFFER_SIZE + 1);
+	while (rd > 0)
+	{
+		buffer[i++] = character;
+		if (character == '\n')
+			break ;
+		rd = read(fd, &character, BUFFER_SIZE - BUFFER_SIZE + 1);
+	}
+	buffer[i] = '\0';
+	if (rd == -1 || i == 0 || (!buffer[i - 1] && !rd))
+		return (free(buffer), NULL);
+	return (buffer);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
@@ -91,62 +94,3 @@ char	*ft_strjoin_with_free(char *s1, char *s2)
 	z[i] = '\0';
 	return (free(s1), free(s2), z);
 }
-
-// char	*ft_strchr(char *buffer, int c)
-// {
-// 	int		i;
-// 	int		x;
-// 	int		z;
-// 	char	*storage;
-
-// 	i = 0;
-// 	z = 0;
-// 	if (!buffer)
-// 		return (NULL);
-// 	x = ft_strlen(buffer);
-// 	while (buffer[i])
-// 	{
-// 		if (buffer[i] == c)
-// 			break ;
-// 		i++;
-// 	}
-// 	if ((x - i) >= 1)
-// 	{
-// 		printf("%d\n", (x - i));
-// 		storage = malloc((x - i) + 1);
-// 	}
-// 	if ((i == x) || ((x - i) < 1))
-// 		return (NULL);
-// 	while (++i < x)
-// 		storage[z++] = buffer[i];
-// 	storage[z] = '\0';
-// 	return (storage);
-// }
-
-// char	*get_next_line(int fd)
-// {
-// 	static char	*storage;
-// 	t_vars		vars;
-
-// 	if ((BUFFER_SIZE < 1) || (fd < 0) || (BUFFER_SIZE > INT_MAX))
-// 		return (NULL);
-// 	vars.buffer = malloc(BUFFER_SIZE + 1);
-// 	vars.read_size = read(fd, vars.buffer, BUFFER_SIZE);
-// 	if (vars.read_size < 0)
-// 		return (free(vars.buffer), NULL);
-// 	vars.buffer[vars.read_size] = '\0';
-// 	while (new_line_checker(vars.buffer) == 0 && vars.read_size > 0)
-// 	{
-// 		storage = ft_strjoin(storage, vars.buffer);
-// 		vars.read_size = read(fd, vars.buffer, BUFFER_SIZE);
-// 		vars.buffer[vars.read_size] = '\0';
-// 	}
-// 	if (vars.read_size == 0)
-// 		vars.line = linemaker(storage, '\0');
-// 	if (storage != NULL)
-// 		vars.buffer = ft_strjoin_with_free(storage, vars.buffer);
-// 	storage = ft_strchr(vars.buffer, '\n');
-// 	if (vars.read_size > 0)
-// 		vars.line = linemaker(vars.buffer, '\n');
-// 	return (free(vars.buffer), vars.line);
-// }
