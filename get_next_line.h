@@ -23,7 +23,7 @@
 # include <stdlib.h>
 // #include "minilibx-linux/mlx.h"
 // #include "minilibx-linux/mlx_int.h"
-# include <mlx.h>
+// # include <mlx.h>
 # include <math.h>
 // #include <AppKit/NSGraphics.h>
 
@@ -45,6 +45,7 @@ typedef struct s_map
 	char	*line;
 	char	*sec_map;
 	char	**map_dp;
+	char	**tmp_dp;
 }		t_organizer;
 
 typedef struct s_mvars
@@ -93,6 +94,18 @@ typedef struct s_ep
 	
 }		t_epc01;
 
+typedef struct s_helper
+{
+	char **tmp_map;
+	int c_count;
+	int e_count;
+	int px_v;
+	int py_v;
+	int px;
+	int py;
+	int i;
+}		t_helper;
+
 int		ft_strlen(char *s);
 char	*buffer_appender(char *buffer, char *storage);
 char	*ft_strchr(char *s, int c);
@@ -112,4 +125,6 @@ int		checker_c(char **sec_map);
 int		checker_e(char **sec_map);
 int		map_size_checker(char *str, int flag);
 char	*ft_strjoin_with_free(char *s1, char *s2);
+int 	valid_helper(char **str);
+void	walking_in_map(int px, int py, char **map, t_helper *path);
 #endif

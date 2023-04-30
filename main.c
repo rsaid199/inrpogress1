@@ -62,140 +62,140 @@ int checker_e(char **sec_map)
         return 0;
 }
 
-void map_drawer(char **sec_map, void *mlx_ptr, void *win_ptr)
-{
-    int x = 0;
-    int ra2si = 0;
-	t_readmap vars;
+// void map_drawer(char **sec_map, void *mlx_ptr, void *win_ptr)
+// {
+//     int x = 0;
+//     int ra2si = 0;
+// 	t_readmap vars;
 	
-    while(sec_map[x])
-    {
-        map_maker(sec_map[x], mlx_ptr, win_ptr, ra2si);
-        x++;
-        ra2si += 64;
-    }
-}
+//     while(sec_map[x])
+//     {
+//         map_maker(sec_map[x], mlx_ptr, win_ptr, ra2si);
+//         x++;
+//         ra2si += 64;
+//     }
+// }
 
 
-int handle_keypress(int keycode, t_main *vars)
-{
-    int i = 0;
-    int x = 1;
+// int handle_keypress(int keycode, t_main *vars)
+// {
+//     int i = 0;
+//     int x = 1;
 
-    if(keycode == 124 || keycode == 2)
-    {
-        while(vars->sec_map[x][i])
-        {
-            if(vars->sec_map[x][i] == 'P' && vars->sec_map[x][i + 1] != '1')
-            {
-				if(vars->sec_map[x][i + 1] == 'E' && checker_e(vars->sec_map) == 0)
-					break;
-                vars->sec_map[x][i] = '0';
-                vars->sec_map[x][i + 1] = 'P';
-				mlx_clear_window(vars->mlx_ptr, vars->win_ptr);
-				map_drawer(vars->sec_map, vars->mlx_ptr, vars->win_ptr);
-                if(checker_c(vars->sec_map) == 1)
-                {
-                    write(1, "GG", 2);
-                    exit(0);
-                }
-                break ;
-            }
-            i++;
-            if(i == (ft_strlen(vars->sec_map[x]) - 1) && vars->sec_map[x + 1] != NULL)
-            {
-                x++;
-                i = 0;
-            }
-        }
-    }
-    else if(keycode == 123 || keycode == 0)
-    {
-        while(vars->sec_map[x][i])
-        {
-            if(vars->sec_map[x][i] == 'P' && vars->sec_map[x][i - 1] != '1')
-            {
-				if(vars->sec_map[x][i - 1] == 'E' && checker_e(vars->sec_map) == 0)
-					break;
-                vars->sec_map[x][i] = '0';
-                vars->sec_map[x][i - 1] = 'P';
-				mlx_clear_window(vars->mlx_ptr, vars->win_ptr);
-				map_drawer(vars->sec_map, vars->mlx_ptr, vars->win_ptr);
-                if(checker_c(vars->sec_map) == 1)
-                {
-                    write(1, "GG", 2);
-                    exit(0);
-                }
-                break;
-            }
-            i++;
-            if(i == (ft_strlen(vars->sec_map[x]) - 1) && vars->sec_map[x + 1] != NULL)
-            {
-                x++;
-                i = 0;
-            }
-        }
-    }
-    else if(keycode == 126 || keycode == 13)
-    {
-        while(vars->sec_map[x][i])
-        {
-            if(vars->sec_map[x][i] == 'P' && vars->sec_map[x - 1][i] != '1')
-            {
-				if(vars->sec_map[x - 1][i] == 'E' && checker_e(vars->sec_map) == 0)
-					break;
-                vars->sec_map[x][i] = '0';
-                vars->sec_map[x - 1][i] = 'P';
-				mlx_clear_window(vars->mlx_ptr, vars->win_ptr);
-				map_drawer(vars->sec_map, vars->mlx_ptr, vars->win_ptr);
-                if(checker_c(vars->sec_map) == 1)
-                {
-                    write(1, "GG", 2);
-                    exit(0);
-                }
-                break;
-            }
-            i++;
-            if(i == (ft_strlen(vars->sec_map[x]) - 1) && vars->sec_map[x + 1] != NULL)
-            {
-                x++;
-                i = 0;
-            }
-        }
-    }
-    else if(keycode == 125 || keycode == 1)
-    {
-        while(vars->sec_map[x][i])
-        {
-            if(vars->sec_map[x][i] == 'P' && vars->sec_map[x + 1][i] != '1')
-            {
-				if(vars->sec_map[x + 1][i] == 'E' && checker_e(vars->sec_map) == 0)
-					break;
-                vars->sec_map[x][i] = '0';
-                vars->sec_map[x + 1][i] = 'P';
-				mlx_clear_window(vars->mlx_ptr, vars->win_ptr);
-				map_drawer(vars->sec_map, vars->mlx_ptr, vars->win_ptr);
-                if(checker_c(vars->sec_map) == 1)
-                {
-                    write(1, "GG", 2);
-                    exit(0);
-                }
-                break;
-            }
-            i++;
-            if(i == (ft_strlen(vars->sec_map[x]) - 1) && vars->sec_map[x + 1] != NULL)
-            {
-                x++;
-                i = 0;
-            }
-        }
-    }
-	if(keycode == 53)
-	{
-		exit(0);
-	}
-	return (0);
-}
+//     if(keycode == 124 || keycode == 2)
+//     {
+//         while(vars->sec_map[x][i])
+//         {
+//             if(vars->sec_map[x][i] == 'P' && vars->sec_map[x][i + 1] != '1')
+//             {
+// 				if(vars->sec_map[x][i + 1] == 'E' && checker_e(vars->sec_map) == 0)
+// 					break;
+//                 vars->sec_map[x][i] = '0';
+//                 vars->sec_map[x][i + 1] = 'P';
+// 				mlx_clear_window(vars->mlx_ptr, vars->win_ptr);
+// 				map_drawer(vars->sec_map, vars->mlx_ptr, vars->win_ptr);
+//                 if(checker_c(vars->sec_map) == 1)
+//                 {
+//                     write(1, "GG", 2);
+//                     exit(0);
+//                 }
+//                 break ;
+//             }
+//             i++;
+//             if(i == (ft_strlen(vars->sec_map[x]) - 1) && vars->sec_map[x + 1] != NULL)
+//             {
+//                 x++;
+//                 i = 0;
+//             }
+//         }
+//     }
+//     else if(keycode == 123 || keycode == 0)
+//     {
+//         while(vars->sec_map[x][i])
+//         {
+//             if(vars->sec_map[x][i] == 'P' && vars->sec_map[x][i - 1] != '1')
+//             {
+// 				if(vars->sec_map[x][i - 1] == 'E' && checker_e(vars->sec_map) == 0)
+// 					break;
+//                 vars->sec_map[x][i] = '0';
+//                 vars->sec_map[x][i - 1] = 'P';
+// 				mlx_clear_window(vars->mlx_ptr, vars->win_ptr);
+// 				map_drawer(vars->sec_map, vars->mlx_ptr, vars->win_ptr);
+//                 if(checker_c(vars->sec_map) == 1)
+//                 {
+//                     write(1, "GG", 2);
+//                     exit(0);
+//                 }
+//                 break;
+//             }
+//             i++;
+//             if(i == (ft_strlen(vars->sec_map[x]) - 1) && vars->sec_map[x + 1] != NULL)
+//             {
+//                 x++;
+//                 i = 0;
+//             }
+//         }
+//     }
+//     else if(keycode == 126 || keycode == 13)
+//     {
+//         while(vars->sec_map[x][i])
+//         {
+//             if(vars->sec_map[x][i] == 'P' && vars->sec_map[x - 1][i] != '1')
+//             {
+// 				if(vars->sec_map[x - 1][i] == 'E' && checker_e(vars->sec_map) == 0)
+// 					break;
+//                 vars->sec_map[x][i] = '0';
+//                 vars->sec_map[x - 1][i] = 'P';
+// 				mlx_clear_window(vars->mlx_ptr, vars->win_ptr);
+// 				map_drawer(vars->sec_map, vars->mlx_ptr, vars->win_ptr);
+//                 if(checker_c(vars->sec_map) == 1)
+//                 {
+//                     write(1, "GG", 2);
+//                     exit(0);
+//                 }
+//                 break;
+//             }
+//             i++;
+//             if(i == (ft_strlen(vars->sec_map[x]) - 1) && vars->sec_map[x + 1] != NULL)
+//             {
+//                 x++;
+//                 i = 0;
+//             }
+//         }
+//     }
+//     else if(keycode == 125 || keycode == 1)
+//     {
+//         while(vars->sec_map[x][i])
+//         {
+//             if(vars->sec_map[x][i] == 'P' && vars->sec_map[x + 1][i] != '1')
+//             {
+// 				if(vars->sec_map[x + 1][i] == 'E' && checker_e(vars->sec_map) == 0)
+// 					break;
+//                 vars->sec_map[x][i] = '0';
+//                 vars->sec_map[x + 1][i] = 'P';
+// 				mlx_clear_window(vars->mlx_ptr, vars->win_ptr);
+// 				map_drawer(vars->sec_map, vars->mlx_ptr, vars->win_ptr);
+//                 if(checker_c(vars->sec_map) == 1)
+//                 {
+//                     write(1, "GG", 2);
+//                     exit(0);
+//                 }
+//                 break;
+//             }
+//             i++;
+//             if(i == (ft_strlen(vars->sec_map[x]) - 1) && vars->sec_map[x + 1] != NULL)
+//             {
+//                 x++;
+//                 i = 0;
+//             }
+//         }
+//     }
+// 	if(keycode == 53)
+// 	{
+// 		exit(0);
+// 	}
+// 	return (0);
+// }
 
 int main()
 {
@@ -205,16 +205,16 @@ int main()
 
     vars.fd = open("maps/map2.ber", O_RDONLY);
     vars.sec_map = map_organizer(vars.fd);
-    vars.i = ft_strlen(vars.sec_map[vars.x]);
-    while(vars.sec_map[vars.x])
-        vars.x++;
-    vars.mlx_ptr = mlx_init();
-    vars.win_ptr = mlx_new_window(vars.mlx_ptr, vars.i*64, vars.x*64, "Test Window");
-    map_drawer(vars.sec_map, vars.mlx_ptr, vars.win_ptr);
-	mlx_hook(vars.win_ptr, 2, 0, handle_keypress, &vars);
-	mlx_hook(vars.win_ptr, 17, 0, (void*)exit, 0);
-    mlx_loop(vars.mlx_ptr);
-    vars.x = 0;
+    // vars.i = ft_strlen(vars.sec_map[vars.x]);
+    // while(vars.sec_map[vars.x])
+    //     vars.x++;
+    // vars.mlx_ptr = mlx_init();
+    // vars.win_ptr = mlx_new_window(vars.mlx_ptr, vars.i*64, vars.x*64, "Test Window");
+    // map_drawer(vars.sec_map, vars.mlx_ptr, vars.win_ptr);
+	// mlx_hook(vars.win_ptr, 2, 0, handle_keypress, &vars);
+	// mlx_hook(vars.win_ptr, 17, 0, (void*)exit, 0);
+    // mlx_loop(vars.mlx_ptr);
+    // vars.x = 0;
     while(vars.sec_map[vars.x])
     {
         free(vars.sec_map[vars.x]);

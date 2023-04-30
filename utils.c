@@ -115,6 +115,13 @@ char	**map_organizer(int fd)
 		exit(0);
 	}
 	close(fd);
+	vars.tmp_dp = ft_split(vars.sec_map, '\n');
+	// printf("%s\n", vars.tmp_dp[1]);
+	if(valid_helper(vars.tmp_dp) == 0)
+	{
+		free(vars.sec_map);
+		exit(2);
+	}
 	vars.map_dp = ft_split(vars.sec_map, '\n');
 	return (free(vars.sec_map), vars.map_dp);
 }
