@@ -24,13 +24,7 @@ int valid_helper(char **str)
             vars.py = 0;
         }
 	}
-	walking_in_map(vars.px_v, vars.py_v, str, &vars);
-	while(str[vars.i])
-	{
-		free(str[vars.i]);
-		vars.i++;
-	}
-	free(str);
+	walking_in_map(vars.py_v, vars.px_v, str, &vars);
 	if(vars.e_count > 0 || vars.c_count > 0)
 		return(0);
 	return(1);

@@ -6,7 +6,7 @@
 /*   By: rsaid <rsaid@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 01:14:52 by rsaid             #+#    #+#             */
-/*   Updated: 2023/04/24 20:40:01 by rsaid            ###   ########.fr       */
+/*   Updated: 2023/04/30 13:25:05 by rsaid            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,24 +104,66 @@ char	**map_organizer(int fd)
 		vars.line = get_next_line(fd);
 		if (vars.line && map_size_checker(vars.line, 0) == 0)
 		{
+			write(1, "Error\n", 6);
 			free(vars.sec_map);
 			free(vars.line);
-			exit(0);
+			exit(2);
 		}
 	}
+	close(fd);
 	if (epc01_checker(vars.sec_map) != 5)
 	{
+		write(1, "Error\n", 6);
 		free(vars.sec_map);
-		exit(0);
+		exit(2);
 	}
-	close(fd);
 	vars.tmp_dp = ft_split(vars.sec_map, '\n');
-	// printf("%s\n", vars.tmp_dp[1]);
-	if(valid_helper(vars.tmp_dp) == 0)
+	if(borders(vars.tmp_dp) == 0 || valid_helper(vars.tmp_dp) == 0)
 	{
+		write(1, "Error\n", 6);
+		free_dp(vars.tmp_dp);
 		free(vars.sec_map);
 		exit(2);
 	}
 	vars.map_dp = ft_split(vars.sec_map, '\n');
 	return (free(vars.sec_map), vars.map_dp);
+}
+
+int borders(char **map)
+{
+	int x;
+	int i;
+	
+	x = 0;
+	i = 0;
+	while(map[x][i])
+	{
+		if(map[x][i] != '1')
+			return (0);
+		i++;
+	}
+	i = 0;
+	while(map[x])
+		x++;
+	x--;
+	while(map[x][i])
+	{
+		if(map[x][i] != '1')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+void free_dp(char **dp)
+{
+	int i;
+
+	i = 0;
+	while(dp[i])
+	{
+		free(dp[i]);
+		i++;
+	}
+	free(dp);
 }

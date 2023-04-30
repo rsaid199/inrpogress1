@@ -6,7 +6,7 @@
 /*   By: rsaid <rsaid@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 21:07:13 by rsaid             #+#    #+#             */
-/*   Updated: 2023/04/24 20:43:33 by rsaid            ###   ########.fr       */
+/*   Updated: 2023/04/30 13:30:13 by rsaid            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <stdlib.h>
 // #include "minilibx-linux/mlx.h"
 // #include "minilibx-linux/mlx_int.h"
-// # include <mlx.h>
+# include <mlx.h>
 # include <math.h>
 // #include <AppKit/NSGraphics.h>
 
@@ -83,27 +83,25 @@ typedef struct s_read
 
 typedef struct s_ep
 {
-	int i;
-	int flags;
-	int w_flag;
-	int sp_flag;
-	int p_flag;
-	int c_flag;
-	int e_flag;
-	int inv_flag;
-	
+	int	i;
+	int	flags;
+	int	w_flag;
+	int	sp_flag;
+	int	p_flag;
+	int	c_flag;
+	int	e_flag;
+	int	inv_flag;
 }		t_epc01;
 
 typedef struct s_helper
 {
-	char **tmp_map;
-	int c_count;
-	int e_count;
-	int px_v;
-	int py_v;
-	int px;
-	int py;
-	int i;
+	int	c_count;
+	int	e_count;
+	int	px_v;
+	int	py_v;
+	int	px;
+	int	py;
+	int	i;
 }		t_helper;
 
 int		ft_strlen(char *s);
@@ -125,6 +123,12 @@ int		checker_c(char **sec_map);
 int		checker_e(char **sec_map);
 int		map_size_checker(char *str, int flag);
 char	*ft_strjoin_with_free(char *s1, char *s2);
-int 	valid_helper(char **str);
+int		valid_helper(char **str);
 void	walking_in_map(int px, int py, char **map, t_helper *path);
+void	move_right(t_main *vars, int x, int i);
+void	move_left(t_main *vars, int x, int i);
+void	move_up(t_main *vars, int x, int i);
+void	move_down(t_main *vars, int x, int i);
+int		borders(char **map);
+void	free_dp(char **dp);
 #endif
