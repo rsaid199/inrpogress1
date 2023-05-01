@@ -6,7 +6,7 @@
 /*   By: rsaid <rsaid@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 21:07:13 by rsaid             #+#    #+#             */
-/*   Updated: 2023/04/30 13:30:13 by rsaid            ###   ########.fr       */
+/*   Updated: 2023/05/01 13:09:48 by rsaid            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_mvars
 	int		fd;
 	void	*mlx_ptr;
 	void	*win_ptr;
+	int		moves;
 }		t_main;
 
 typedef struct s_read
@@ -131,4 +132,16 @@ void	move_up(t_main *vars, int x, int i);
 void	move_down(t_main *vars, int x, int i);
 int		borders(char **map);
 void	free_dp(char **dp);
+int		ft_putchar(char c);
+int		ft_putstr(char *s);
+int		ft_putnbr(int n);
+int		nbrlen(int x);
+void	wall_draw(void *mlx_ptr, void *win_ptr, int ra2si, t_readmap *vars);
+void	space_draw(void *mlx_ptr, void *win_ptr, int ra2si, t_readmap *vars);
+void	collect_draw(void *mlx_ptr, void *win_ptr, int ra2si, t_readmap *vars);
+void	player_draw(void *mlx_ptr, void *win_ptr, int ra2si, t_readmap *vars);
+void	exit_draw(void *mlx_ptr, void *win_ptr, int ra2si, t_readmap *vars);
+void	bor_valid_exit(char *str, char **str1);
+void	ep_exit(char *str);
+void	init_helper(t_helper *vars);
 #endif

@@ -6,7 +6,7 @@
 /*   By: rsaid <rsaid@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 19:59:39 by rsaid             #+#    #+#             */
-/*   Updated: 2023/04/24 20:00:28 by rsaid            ###   ########.fr       */
+/*   Updated: 2023/05/01 13:23:21 by rsaid            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	**ft_split(char *s, char c)
 	char	**splitret;
 	int		dpcounter;
 	int		start;
-	size_t	end;
+	int		end;
 
 	if (!s)
 		return (NULL);

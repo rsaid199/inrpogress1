@@ -6,7 +6,7 @@
 /*   By: rsaid <rsaid@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 10:55:03 by rsaid             #+#    #+#             */
-/*   Updated: 2023/04/30 11:23:58 by rsaid            ###   ########.fr       */
+/*   Updated: 2023/05/01 13:13:09 by rsaid            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	move_right(t_main *vars, int x, int i)
 			map_drawer(vars->sec_map, vars->mlx_ptr, vars->win_ptr);
 			if (checker_c(vars->sec_map) == 1)
 			{
-				write(1, "GG", 2);
+				write(1, "GG\n", 3);
 				exit(0);
 			}
 			break ;
@@ -55,7 +55,7 @@ void	move_left(t_main *vars, int x, int i)
 			map_drawer(vars->sec_map, vars->mlx_ptr, vars->win_ptr);
 			if (checker_c(vars->sec_map) == 1)
 			{
-				write(1, "GG", 2);
+				write(1, "GG\n", 3);
 				exit(0);
 			}
 			break ;
@@ -84,7 +84,7 @@ void	move_up(t_main *vars, int x, int i)
 			map_drawer(vars->sec_map, vars->mlx_ptr, vars->win_ptr);
 			if (checker_c(vars->sec_map) == 1)
 			{
-				write(1, "GG", 2);
+				write(1, "GG\n", 3);
 				exit(0);
 			}
 			break ;
@@ -113,7 +113,7 @@ void	move_down(t_main *vars, int x, int i)
 			map_drawer(vars->sec_map, vars->mlx_ptr, vars->win_ptr);
 			if (checker_c(vars->sec_map) == 1)
 			{
-				write(1, "GG", 2);
+				write(1, "GG\n", 3);
 				exit(0);
 			}
 			break ;

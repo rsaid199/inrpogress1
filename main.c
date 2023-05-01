@@ -6,7 +6,7 @@
 /*   By: rsaid <rsaid@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 20:54:56 by rsaid             #+#    #+#             */
-/*   Updated: 2023/04/30 13:48:43 by rsaid            ###   ########.fr       */
+/*   Updated: 2023/05/01 13:31:24 by rsaid            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ void	map_drawer(char **sec_map, void *mlx_ptr, void *win_ptr)
 {
 	int			x;
 	int			ra2si;
-	t_readmap	vars;
 
 	x = 0;
 	ra2si = 0;
@@ -99,17 +98,30 @@ int	handle_keypress(int keycode, t_main *vars)
 	else if (keycode == 125 || keycode == 1)
 		move_down(vars, x, i);
 	else if (keycode == 53)
+	{
+		free_dp(vars->sec_map);
 		exit(0);
+	}
+	vars->moves++;
+	write(1, "Moves Count : ", 14);
+	ft_putnbr(vars->moves);
+	write(1, "\n", 1);
 	return (0);
 }
 
-int	main(void)
+int	main(int ac, char **av)
 {
 	t_main	vars;
 
+	if (ac != 2)
+	{
+		write(1, "Error\n", 6);
+		exit(2);
+	}
 	vars.i = 0;
 	vars.x = 0;
-	vars.fd = open("maps/map.ber", O_RDONLY);
+	vars.moves = 0;
+	vars.fd = open(av[1], O_RDONLY);
 	vars.sec_map = map_organizer(vars.fd);
 	vars.i = ft_strlen(vars.sec_map[vars.x]);
 	while (vars.sec_map[vars.x])
